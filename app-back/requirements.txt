@@ -5,9 +5,9 @@ psycopg2
 python-dotenv
 sqlalchemy
 requests           
-opencv-python        
-torch                
-ultralytics         
+# opencv-python        
+# torch                
+# ultralytics         
 numpy                
 shapely              
 asyncpg
