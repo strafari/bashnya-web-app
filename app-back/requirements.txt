@@ -12,4 +12,3 @@ numpy
 shapely              
 asyncpg
 aioboto3
-tkinter
