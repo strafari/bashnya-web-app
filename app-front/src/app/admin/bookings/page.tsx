@@ -24,7 +24,7 @@ export default function BookingList() {
     const fetchBookings = async () => {
       try {
         const token = useStore.getState().token;
-        const response = await fetch("https://bashnya-web-app-production.up.railway.app/bookings/", {
+        const response = await fetch('${API}/bookings/', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -49,7 +49,7 @@ export default function BookingList() {
   const handleDelete = async (id: number) => {
     if (!confirm("Вы уверены, что хотите удалить это бронирование?")) return;
     try {
-      const res = await fetch(`https://bashnya-web-app-production.up.railway.app/bookings/${id}`, {
+      const res = await fetch(`${API}/bookings/${id}`, {
         method: "DELETE",
         credentials: "include",
       });
