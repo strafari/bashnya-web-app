@@ -11,6 +11,7 @@ import NewsCard from "@/components/NewsCard";
 import EventsCard from "@/components/EventsCard";
 import EventModal from "@/components/EventModal";
 import Header from "@/components/Header";
+import HeaderWrapper from "@/components/HeaderWrapper"
 const API = process.env.NEXT_PUBLIC_API_URL;
 interface NewsItem {
   news_id: number;
