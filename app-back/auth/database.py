@@ -1,5 +1,5 @@
 from datetime import datetime
-from tkinter import CHAR
+# from tkinter import CHAR
 from typing import AsyncGenerator
 from fastapi import Depends
 from fastapi_users.db import SQLAlchemyBaseUserTable, SQLAlchemyUserDatabase
