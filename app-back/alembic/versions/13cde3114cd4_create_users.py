@@ -1,8 +1,8 @@
-"""init
+"""create users
 
-Revision ID: 6af31619cfe2
+Revision ID: 13cde3114cd4
 Revises: 
-Create Date: 2025-05-14 18:37:39.064635
+Create Date: 2025-06-08 14:06:20.884423
 
 """
 from typing import Sequence, Union
@@ -12,7 +12,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = '6af31619cfe2'
+revision: str = '13cde3114cd4'
 down_revision: Union[str, None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -33,14 +33,14 @@ def upgrade() -> None:
     sa.Column('event_date_time', sa.TIMESTAMP(), nullable=False),
     sa.Column('event_location', sa.String(length=100), nullable=False),
     sa.Column('event_max_seats', sa.Integer(), nullable=False),
-    sa.Column('event_photo', sa.String(length=255), nullable=False),
+    sa.Column('event_photo', sa.String(length=512), nullable=False),
     sa.Column('event_host', sa.String(length=255), nullable=False),
     sa.Column('event_price', sa.String(length=10), nullable=False),
     sa.PrimaryKeyConstraint('event_id')
     )
     op.create_table('news',
     sa.Column('news_id', sa.Integer(), nullable=False),
-    sa.Column('news_photo', sa.String(length=255), nullable=False),
+    sa.Column('news_photo', sa.String(length=512), nullable=False),
     sa.Column('news_text', sa.String(length=5000), nullable=False),
     sa.Column('news_date', sa.TIMESTAMP(), nullable=False),
     sa.Column('news_title', sa.String(length=50), nullable=False),
@@ -56,12 +56,6 @@ def upgrade() -> None:
     sa.Column('is_active', sa.Boolean(), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email')
-    )
-    op.create_table('event_history',
-    sa.Column('event_history_user_id', sa.Integer(), nullable=False),
-    sa.Column('event_history_event_id', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['event_history_event_id'], ['event.event_id'], ),
-    sa.ForeignKeyConstraint(['event_history_user_id'], ['user.id'], )
     )
     op.create_table('event_registration',
     sa.Column('event_registration_id', sa.Integer(), nullable=False),
@@ -102,7 +96,6 @@ def downgrade() -> None:
     op.drop_table('booking')
     op.drop_table('seat')
     op.drop_table('event_registration')
-    op.drop_table('event_history')
     op.drop_table('user')
     op.drop_table('news')
     op.drop_table('event')
