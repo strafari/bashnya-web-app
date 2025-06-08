@@ -1,6 +1,6 @@
+export const dynamic = 'force-dynamic';
 import "./globals.css";
 import { ReactNode } from "react";
-
 import ClientLayout from "./ClientLayout";
 import AuthProvider from "../components/AuthProvider";
 export const metadata = {
