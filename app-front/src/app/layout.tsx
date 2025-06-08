@@ -34,13 +34,21 @@ const unbounded = Unbounded({
   display: 'swap',
 });
 
-export default function RootLayout({ children }) {
+
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="ru" className={${montserrat.variable} ${unbounded.variable}}>
+    <html lang="ru">
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Unbounded:wght@200..900&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body>{children}</body>
     </html>
   )
 }
+
 
 // export default function RootLayout({ children }: { children: ReactNode }) {
 //   return (
