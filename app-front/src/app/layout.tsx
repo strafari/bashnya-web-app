@@ -3,25 +3,25 @@ import { ReactNode } from "react";
 import { Montserrat, Unbounded } from 'next/font/google';
 import ClientLayout from "./ClientLayout";
 import AuthProvider from "../components/AuthProvider";
-// export const metadata = {
-//   title: "Башня ",
-//   description:
-//     "Профессиональная забота о питомцах в Норильске: «Хакуна Матата» — диагностика, лечение и вакцинация. Оставьте заявку онлайн!",
-//   applicationName: "Хакуна Матата",
-//   keywords: [
-//     "ветклиника норильск",
-//     "хакуна матата",
-//     "ветеринарная клиника",
-//     "ветеринар",
-//     "лечение кошек",
-//     "ветеринарные услуги",
-//     "хакуна матата норильск",
-//   ],
-//   icons: {
-//     icon: "/favicon.png",
-//     shortcut: "/favicon.png",
-//   },
-// };
+export const metadata = {
+  title: "Башня ",
+  description:
+    "Профессиональная забота о питомцах в Норильске: «Хакуна Матата» — диагностика, лечение и вакцинация. Оставьте заявку онлайн!",
+  applicationName: "Хакуна Матата",
+  keywords: [
+    "ветклиника норильск",
+    "хакуна матата",
+    "ветеринарная клиника",
+    "ветеринар",
+    "лечение кошек",
+    "ветеринарные услуги",
+    "хакуна матата норильск",
+  ],
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+  },
+};
 
 const montserrat = Montserrat({
   subsets: ['latin'],
