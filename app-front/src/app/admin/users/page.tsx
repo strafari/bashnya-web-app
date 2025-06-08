@@ -19,7 +19,7 @@ export default function UsersPage() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch("http://localhost:8000/users/", {
+        const response = await fetch("https://bashnya-web-app-production.up.railway.app/users/", {
           credentials: "include",
         });
 
@@ -46,7 +46,7 @@ export default function UsersPage() {
 
     try {
       const response = await fetch(
-        `http://localhost:8000/delete_user/${userId}`,
+        `https://bashnya-web-app-production.up.railway.app/delete_user/${userId}`,
         {
           method: "DELETE",
           credentials: "include",

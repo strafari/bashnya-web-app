@@ -30,7 +30,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
       formDataEncoded.append("username", formData.email);
       formDataEncoded.append("password", formData.password);
 
-      const response = await fetch("http://localhost:8000/auth/jwt/login", {
+      const response = await fetch("https://bashnya-web-app-production.up.railway.app/auth/jwt/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",

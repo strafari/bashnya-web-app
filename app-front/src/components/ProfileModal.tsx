@@ -16,7 +16,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
 
   const handleLogout = async () => {
     try {
-      const response = await fetch("http://localhost:8000/auth/jwt/logout", {
+      const response = await fetch("https://bashnya-web-app-production.up.railway.app/auth/jwt/logout", {
         method: "POST",
         credentials: "include",
         headers: {
@@ -36,7 +36,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch("http://localhost:8000/htoya/", {
+        const response = await fetch("https://bashnya-web-app-production.up.railway.app/htoya/", {
           credentials: "include",
         });
         if (response.ok) {

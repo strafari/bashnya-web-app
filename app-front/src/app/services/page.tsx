@@ -1,4 +1,5 @@
 "use client";
+export const dynamic = 'force-dynamic';
 import { useEffect, useState, useMemo } from "react";
 import useStore, { Service, PriceList, Department } from "../../store/useStore";
 import ServiceItem from "../../components/ServiceItem";

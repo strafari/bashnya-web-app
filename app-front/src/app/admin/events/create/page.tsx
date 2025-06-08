@@ -48,7 +48,7 @@ export default function CreateEvent() {
     setError(null);
 
     try {
-      const response = await fetch("http://localhost:8000/events/", {
+      const response = await fetch("https://bashnya-web-app-production.up.railway.app/events/", {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },

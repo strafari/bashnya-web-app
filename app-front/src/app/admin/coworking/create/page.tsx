@@ -27,7 +27,7 @@ export default function CreateCoworking() {
     setError(null);
 
     try {
-      const response = await fetch("http://localhost:8000/coworking/", {
+      const response = await fetch("https://bashnya-web-app-production.up.railway.app/coworking/", {
         method: "POST",
         credentials: "include",
         headers: {

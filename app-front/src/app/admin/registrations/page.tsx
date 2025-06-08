@@ -19,7 +19,7 @@ export default function EventRegistrationList() {
     const fetchRegistrations = async () => {
       try {
         const response = await fetch(
-          "http://localhost:8000/event_registrations/",
+          "https://bashnya-web-app-production.up.railway.app/event_registrations/",
           {
             credentials: "include",
           }
@@ -44,7 +44,7 @@ export default function EventRegistrationList() {
     if (!confirm("Вы уверены, что хотите удалить эту регистрацию?")) return;
     try {
       const res = await fetch(
-        `http://localhost:8000/event_registrations/${id}`,
+        `https://bashnya-web-app-production.up.railway.app/event_registrations/${id}`,
         {
           method: "DELETE",
           credentials: "include",

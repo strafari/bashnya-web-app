@@ -20,7 +20,7 @@ export async function middleware(req: NextRequest) {
 
     // Fetch user data to check is_superuser status
     try {
-      const response = await fetch("http://localhost:8000/htoya/", {
+      const response = await fetch("https://bashnya-web-app-production.up.railway.app/htoya/", {
         headers: {
           Cookie: `bonds=${token}`,
         },
@@ -59,7 +59,7 @@ export async function middleware(req: NextRequest) {
     }
 
     // Verify token with backend
-    const response = await fetch("http://localhost:8000/htoya/", {
+    const response = await fetch("https://bashnya-web-app-production.up.railway.app/htoya/", {
       headers: {
         Cookie: `bonds=${token}`,
       },

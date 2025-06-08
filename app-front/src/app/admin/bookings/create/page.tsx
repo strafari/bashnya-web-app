@@ -38,7 +38,7 @@ export default function CreateBooking() {
 
     try {
       const token = useStore.getState().token;
-      const response = await fetch("http://localhost:8000/bookings/", {
+      const response = await fetch("https://bashnya-web-app-production.up.railway.app/bookings/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

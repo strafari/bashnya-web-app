@@ -19,7 +19,7 @@ export default function NewsPage() {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch("http://localhost:8000/news/")
+    fetch("https://bashnya-web-app-production.up.railway.app/news/")
       .then((res) => {
         if (!res.ok) {
           throw new Error(`Error: ${res.statusText}`);

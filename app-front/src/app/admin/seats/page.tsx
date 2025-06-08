@@ -19,7 +19,7 @@ export default function SeatList() {
   useEffect(() => {
     const fetchSeats = async () => {
       try {
-        const response = await fetch("http://localhost:8000/seats/", {
+        const response = await fetch("https://bashnya-web-app-production.up.railway.app/seats/", {
           credentials: "include",
         });
         if (!response.ok) {
@@ -41,7 +41,7 @@ export default function SeatList() {
   const handleDelete = async (id: number) => {
     if (!confirm("Вы уверены, что хотите удалить это место?")) return;
     try {
-      const res = await fetch(`http://localhost:8000/seats/${id}`, {
+      const res = await fetch(`https://bashnya-web-app-production.up.railway.app/seats/${id}`, {
         method: "DELETE",
         credentials: "include",
       });

@@ -155,7 +155,7 @@ const ProfilePage: React.FC = () => {
         try {
           // Fetch user info to check superuser status
           const userInfoResponse = await fetch(
-            "http://localhost:8000/htoya/",
+            "https://bashnya-web-app-production.up.railway.app/htoya/",
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -171,7 +171,7 @@ const ProfilePage: React.FC = () => {
 
           // Fetch registered events for the user
           const userEventsResponse = await fetch(
-            "http://localhost:8000/event_registrations/",
+            "https://bashnya-web-app-production.up.railway.app/event_registrations/",
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -184,7 +184,7 @@ const ProfilePage: React.FC = () => {
             const userEventsData = await userEventsResponse.json();
 
             // Fetch additional event details
-            const eventsResponse = await fetch("http://localhost:8000/events");
+            const eventsResponse = await fetch("https://bashnya-web-app-production.up.railway.app/events");
             if (eventsResponse.ok) {
               const eventsData = await eventsResponse.json();
 

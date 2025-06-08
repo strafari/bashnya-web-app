@@ -22,7 +22,7 @@ export default function CoworkingList() {
   useEffect(() => {
     const fetchCoworkings = async () => {
       try {
-        const response = await fetch("http://localhost:8000/coworking/", {
+        const response = await fetch("https://bashnya-web-app-production.up.railway.app/coworking/", {
           credentials: "include",
         });
         if (!response.ok) {
@@ -45,7 +45,7 @@ export default function CoworkingList() {
   const handleDelete = async (id: number) => {
     if (!confirm("Вы уверены, что хотите удалить этот коворкинг?")) return;
     try {
-      const res = await fetch(`http://localhost:8000/coworking/${id}`, {
+      const res = await fetch(`https://bashnya-web-app-production.up.railway.app/coworking/${id}`, {
         method: "DELETE",
         credentials: "include",
       });
@@ -71,7 +71,7 @@ export default function CoworkingList() {
 
     try {
       const response = await fetch(
-        `http://localhost:8000/coworking/${currentCoworking.coworking_id}`,
+        `https://bashnya-web-app-production.up.railway.app/coworking/${currentCoworking.coworking_id}`,
         {
           method: "PUT",
           credentials: "include",

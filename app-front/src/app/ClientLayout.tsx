@@ -30,9 +30,9 @@ export default function ClientLayout({ children }: { children: ReactNode }) {
     const fetchInitialData = async () => {
       try {
         const [newsRes, departmentsRes, servicesRes] = await Promise.all([
-          fetch("http://localhost:8000/news"),
-          fetch("http://localhost:8000/departments"),
-          fetch("http://localhost:8000/services"),
+          fetch("https://bashnya-web-app-production.up.railway.app/news"),
+          fetch("https://bashnya-web-app-production.up.railway.app/departments"),
+          fetch("https://bashnya-web-app-production.up.railway.app/services"),
         ]);
 
         if (newsRes.ok) setNews(await newsRes.json());

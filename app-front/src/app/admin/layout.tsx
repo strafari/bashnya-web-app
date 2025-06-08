@@ -16,7 +16,7 @@ export default function AdminLayout({
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const res = await fetch("http://localhost:8000/htoya/", {
+        const res = await fetch("https://bashnya-web-app-production.up.railway.app/htoya/", {
           credentials: "include",
         });
         if (res.ok) {
@@ -42,7 +42,7 @@ export default function AdminLayout({
 
   const handleLogout = async () => {
     try {
-      const res = await fetch("http://localhost:8000/auth/jwt/logout", {
+      const res = await fetch("https://bashnya-web-app-production.up.railway.app/auth/jwt/logout", {
         method: "POST",
         credentials: "include",
       });

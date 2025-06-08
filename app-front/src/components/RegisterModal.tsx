@@ -27,7 +27,7 @@ const RegisterModal: React.FC<RegisterModalProps> = ({ isOpen, onClose }) => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:8000/auth/register", {
+      const response = await fetch("https://bashnya-web-app-production.up.railway.app/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

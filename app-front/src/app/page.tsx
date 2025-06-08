@@ -98,7 +98,7 @@ export default function Home() {
     // Fetch the latest events data
     const fetchLatestEvents = async () => {
       try {
-        const response = await fetch("http://localhost:8000/events");
+        const response = await fetch("https://bashnya-web-app-production.up.railway.app/events");
         if (!response.ok) {
           throw new Error("Failed to fetch events");
         }

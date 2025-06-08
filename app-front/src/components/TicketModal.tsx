@@ -67,7 +67,7 @@ const TicketModal: React.FC<TicketModalProps> = ({
 
     try {
       const response = await fetch(
-        "http://localhost:8000/event_registrations/",
+        "https://bashnya-web-app-production.up.railway.app/event_registrations/",
         {
           method: "POST",
           headers: {

@@ -10,7 +10,7 @@ export async function GET(request: NextRequest) {
     }
 
     // Verify the token with your backend
-    const response = await fetch("http://localhost:8000/htoya/", {
+    const response = await fetch("https://bashnya-web-app-production.up.railway.app/htoya/", {
       headers: {
         Cookie: `bonds=${token}`,
       },

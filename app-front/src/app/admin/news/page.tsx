@@ -22,7 +22,7 @@ export default function NewsList() {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await fetch("http://localhost:8000/news/", {
+        const response = await fetch("https://bashnya-web-app-production.up.railway.app/news/", {
           credentials: "include",
         });
         if (!response.ok) {
@@ -47,7 +47,7 @@ export default function NewsList() {
   const handleDelete = async (id: number) => {
     if (!confirm("Вы уверены, что хотите удалить эту новость?")) return;
     try {
-      const res = await fetch(`http://localhost:8000/news/${id}`, {
+      const res = await fetch(`https://bashnya-web-app-production.up.railway.app/news/${id}`, {
         method: "DELETE",
         credentials: "include",
       });
@@ -73,7 +73,7 @@ export default function NewsList() {
 
     try {
       const response = await fetch(
-        `http://localhost:8000/news/${currentNews.news_id}`,
+        `https://bashnya-web-app-production.up.railway.app/news/${currentNews.news_id}`,
         {
           method: "PUT",
           credentials: "include",

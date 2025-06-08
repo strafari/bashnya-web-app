@@ -27,7 +27,7 @@ export default function EventList() {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await fetch("http://localhost:8000/events/", {
+        const response = await fetch("https://bashnya-web-app-production.up.railway.app/events/", {
           credentials: "include",
         });
         if (!response.ok) {
@@ -49,7 +49,7 @@ export default function EventList() {
   const handleDelete = async (id: number) => {
     if (!confirm("Вы уверены, что хотите удалить это мероприятие?")) return;
     try {
-      const res = await fetch(`http://localhost:8000/events/${id}`, {
+      const res = await fetch(`https://bashnya-web-app-production.up.railway.app/events/${id}`, {
         method: "DELETE",
         credentials: "include",
       });
@@ -75,7 +75,7 @@ export default function EventList() {
 
     try {
       const response = await fetch(
-        `http://localhost:8000/events/${currentEvent.event_id}`,
+        `https://bashnya-web-app-production.up.railway.app/events/${currentEvent.event_id}`,
         {
           method: "PUT",
           credentials: "include",

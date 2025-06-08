@@ -68,7 +68,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
         }
       } else {
         // Registration logic remains the same
-        const response = await fetch("http://localhost:8000/auth/register", {
+        const response = await fetch("https://bashnya-web-app-production.up.railway.app/auth/register", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

@@ -37,7 +37,7 @@ export default function NewsDetailPage() {
     if (cached) {
       if (!cached.news_text || !cached.news_photo) {
         setIsLoading(true);
-        fetch(`http://localhost:8000/news/${newsId}`)
+        fetch(`https://bashnya-web-app-production.up.railway.app/news/${newsId}`)
           .then((res) => {
             if (!res.ok) {
               if (res.status === 404) {
@@ -67,7 +67,7 @@ export default function NewsDetailPage() {
     }
 
     setIsLoading(true);
-    fetch(`http://localhost:8000/news/${newsId}`)
+    fetch(`https://bashnya-web-app-production.up.railway.app/news/${newsId}`)
       .then((res) => {
         if (!res.ok) {
           if (res.status === 404) {

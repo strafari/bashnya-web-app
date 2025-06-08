@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
   try {
-    const response = await fetch("http://localhost:8000/htoya/", {
+    const response = await fetch("https://bashnya-web-app-production.up.railway.app/htoya/", {
       headers: {
         // Передаём cookie из запроса
         Cookie: req.headers.get("Cookie") || "",

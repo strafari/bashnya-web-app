@@ -26,7 +26,7 @@ export default function CreateSeat() {
     setError(null);
 
     try {
-      const response = await fetch("http://localhost:8000/seats/", {
+      const response = await fetch("https://bashnya-web-app-production.up.railway.app/seats/", {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
