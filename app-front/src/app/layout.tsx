@@ -1,6 +1,6 @@
 import "./globals.css";
 import { ReactNode } from "react";
-import { Montserrat, Unbounded } from 'next/font/google';
+import { Montserrat, Unbounded } from 'next/font/google'
 import ClientLayout from "./ClientLayout";
 import AuthProvider from "../components/AuthProvider";
 // export const metadata = {
@@ -27,23 +27,25 @@ const montserrat = Montserrat({
   subsets: ['latin'],
   weight: ['100','200','300','400','500','600','700','800','900'],
   display: 'swap',
+  variable: '--font-montserrat',
 });
 const unbounded = Unbounded({
   subsets: ['latin'],
   weight: ['200','300','400','500','600','700','800','900'],
   display: 'swap',
+  variable: '--font-unbounded',
 });
 
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  const classNames = `${montserrat.variable} ${unbounded.variable}`
+  
   return (
-    <html lang="ru">
-      <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Unbounded:wght@200..900&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+    <html lang="ru" className={classNames}>
       <body>{children}</body>
     </html>
   )

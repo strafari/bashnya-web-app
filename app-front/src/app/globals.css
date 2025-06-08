@@ -10,6 +10,12 @@ body {
   font-family: "Unbounded", serif;
 }
 
+:root {
+  --font-montserrat: 'Montserrat', sans-serif;
+  --font-unbounded: 'Unbounded', sans-serif;
+}
+
+
 h1 {
   font-size: clamp(40px, 4vw, 128px);
   font-weight: 700;
