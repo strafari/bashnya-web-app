@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { format, parseISO } from "date-fns";
 import Modal from "@/components/EditModal";
-
+const API = process.env.NEXT_PUBLIC_API_URL;
 type Event = {
   event_id: number;
   event_name: string;
@@ -27,7 +27,7 @@ export default function EventList() {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await fetch("https://bashnya-web-app-production.up.railway.app/events/", {
+        const response = await fetch("${API}/events/", {
           credentials: "include",
         });
         if (!response.ok) {
@@ -49,7 +49,7 @@ export default function EventList() {
   const handleDelete = async (id: number) => {
     if (!confirm("Вы уверены, что хотите удалить это мероприятие?")) return;
     try {
-      const res = await fetch(`https://bashnya-web-app-production.up.railway.app/events/${id}`, {
+      const res = await fetch(`${API}/events/${id}`, {
         method: "DELETE",
         credentials: "include",
       });
@@ -75,7 +75,7 @@ export default function EventList() {
 
     try {
       const response = await fetch(
-        `https://bashnya-web-app-production.up.railway.app/events/${currentEvent.event_id}`,
+        `${API}/events/${currentEvent.event_id}`,
         {
           method: "PUT",
           credentials: "include",

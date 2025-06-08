@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Modal from "@/components/EditModal"; // Ensure you have this Modal component
-
+const API = process.env.NEXT_PUBLIC_API_URL;
 type Coworking = {
   coworking_id: number;
   coworking_location: string;
@@ -22,7 +22,7 @@ export default function CoworkingList() {
   useEffect(() => {
     const fetchCoworkings = async () => {
       try {
-        const response = await fetch("https://bashnya-web-app-production.up.railway.app/coworking/", {
+        const response = await fetch("${API}/coworking/", {
           credentials: "include",
         });
         if (!response.ok) {
@@ -45,7 +45,7 @@ export default function CoworkingList() {
   const handleDelete = async (id: number) => {
     if (!confirm("Вы уверены, что хотите удалить этот коворкинг?")) return;
     try {
-      const res = await fetch(`https://bashnya-web-app-production.up.railway.app/coworking/${id}`, {
+      const res = await fetch(`${API}/coworking/${id}`, {
         method: "DELETE",
         credentials: "include",
       });
@@ -71,7 +71,7 @@ export default function CoworkingList() {
 
     try {
       const response = await fetch(
-        `https://bashnya-web-app-production.up.railway.app/coworking/${currentCoworking.coworking_id}`,
+        `${API}/coworking/${currentCoworking.coworking_id}`,
         {
           method: "PUT",
           credentials: "include",

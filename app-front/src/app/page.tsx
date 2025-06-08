@@ -11,7 +11,7 @@ import NewsCard from "@/components/NewsCard";
 import EventsCard from "@/components/EventsCard";
 import EventModal from "@/components/EventModal";
 import Header from "@/components/Header";
-
+const API = process.env.NEXT_PUBLIC_API_URL;
 interface NewsItem {
   news_id: number;
   news_photo: string;
@@ -77,7 +77,7 @@ export default function Home() {
     const fetchLatestNews = async () => {
       try {
         const response = await fetch(
-          "http://localhost:8000/news?limit=3&sort=latest"
+          "${API}/news?limit=3&sort=latest"
         );
         if (!response.ok) {
           throw new Error("Failed to fetch news");
@@ -98,7 +98,7 @@ export default function Home() {
     // Fetch the latest events data
     const fetchLatestEvents = async () => {
       try {
-        const response = await fetch("https://bashnya-web-app-production.up.railway.app/events");
+        const response = await fetch("${API}/events");
         if (!response.ok) {
           throw new Error("Failed to fetch events");
         }

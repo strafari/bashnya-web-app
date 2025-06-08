@@ -1,4 +1,5 @@
 import { NextResponse, NextRequest } from "next/server";
+const API = process.env.NEXT_PUBLIC_API_URL;
 
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
@@ -20,7 +21,7 @@ export async function middleware(req: NextRequest) {
 
     // Fetch user data to check is_superuser status
     try {
-      const response = await fetch("https://bashnya-web-app-production.up.railway.app/htoya/", {
+      const response = await fetch("${API}/htoya/", {
         headers: {
           Cookie: `bonds=${token}`,
         },
@@ -59,7 +60,7 @@ export async function middleware(req: NextRequest) {
     }
 
     // Verify token with backend
-    const response = await fetch("https://bashnya-web-app-production.up.railway.app/htoya/", {
+    const response = await fetch("${API}/htoya/", {
       headers: {
         Cookie: `bonds=${token}`,
       },

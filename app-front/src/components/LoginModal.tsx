@@ -1,7 +1,7 @@
 // components/LoginModal.tsx
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import { useRouter } from "next/navigation";
-
+const API = process.env.NEXT_PUBLIC_API_URL;
 interface LoginModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -30,7 +30,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
       formDataEncoded.append("username", formData.email);
       formDataEncoded.append("password", formData.password);
 
-      const response = await fetch("https://bashnya-web-app-production.up.railway.app/auth/jwt/login", {
+      const response = await fetch("${API}/auth/jwt/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",

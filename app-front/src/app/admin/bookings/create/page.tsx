@@ -8,6 +8,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
 import useStore from "@/store/useStore";
 
+const API = process.env.NEXT_PUBLIC_API_URL;
+
 export default function CreateBooking() {
   const router = useRouter();
   const [formData, setFormData] = useState({

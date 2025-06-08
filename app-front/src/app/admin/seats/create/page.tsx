@@ -4,7 +4,7 @@ export const dynamic = 'force-dynamic';
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-
+const API = process.env.NEXT_PUBLIC_API_URL;
 export default function CreateSeat() {
   const router = useRouter();
   const [formData, setFormData] = useState({
@@ -26,7 +26,7 @@ export default function CreateSeat() {
     setError(null);
 
     try {
-      const response = await fetch("https://bashnya-web-app-production.up.railway.app/seats/", {
+      const response = await fetch("${API}/seats/", {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-
+const API = process.env.NEXT_PUBLIC_API_URL;
 export default function CreateNews() {
   const router = useRouter();
   const [formData, setFormData] = useState({
@@ -31,7 +31,7 @@ export default function CreateNews() {
     imageData.append("file", file);
 
     try {
-      const response = await fetch("https://bashnya-web-app-production.up.railway.app/upload/", {
+      const response = await fetch("${API}/upload/", {
         method: "POST",
         body: imageData,
       });
@@ -53,7 +53,7 @@ export default function CreateNews() {
     setError(null);
 
     try {
-      const response = await fetch("https://bashnya-web-app-production.up.railway.app/news/", {
+      const response = await fetch("${API}/news/", {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },

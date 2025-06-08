@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-
+const API = process.env.NEXT_PUBLIC_API_URL;
 type Seat = {
   seat_id: number;
   seat_coworking_id: number;
@@ -19,7 +19,7 @@ export default function SeatList() {
   useEffect(() => {
     const fetchSeats = async () => {
       try {
-        const response = await fetch("https://bashnya-web-app-production.up.railway.app/seats/", {
+        const response = await fetch("${API}/seats/", {
           credentials: "include",
         });
         if (!response.ok) {
@@ -41,7 +41,7 @@ export default function SeatList() {
   const handleDelete = async (id: number) => {
     if (!confirm("Вы уверены, что хотите удалить это место?")) return;
     try {
-      const res = await fetch(`https://bashnya-web-app-production.up.railway.app/seats/${id}`, {
+      const res = await fetch(`${API}/seats/${id}`, {
         method: "DELETE",
         credentials: "include",
       });

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-
+const API = process.env.NEXT_PUBLIC_API_URL;
 type EventRegistration = {
   event_registration_id: number;
   event_registration_user_id: number;
@@ -19,7 +19,7 @@ export default function EventRegistrationList() {
     const fetchRegistrations = async () => {
       try {
         const response = await fetch(
-          "https://bashnya-web-app-production.up.railway.app/event_registrations/",
+          "${API}/event_registrations/",
           {
             credentials: "include",
           }
@@ -44,7 +44,7 @@ export default function EventRegistrationList() {
     if (!confirm("Вы уверены, что хотите удалить эту регистрацию?")) return;
     try {
       const res = await fetch(
-        `https://bashnya-web-app-production.up.railway.app/event_registrations/${id}`,
+        `${API}/event_registrations/${id}`,
         {
           method: "DELETE",
           credentials: "include",

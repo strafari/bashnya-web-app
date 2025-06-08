@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-
+const API = process.env.NEXT_PUBLIC_API_URL;
 export async function POST(req: NextRequest) {
   const { email, password } = await req.json();
 
@@ -7,7 +7,7 @@ export async function POST(req: NextRequest) {
   formData.append("username", email);
   formData.append("password", password);
 
-  const response = await fetch("https://bashnya-web-app-production.up.railway.app/auth/jwt/login", {
+  const response = await fetch("${API}/auth/jwt/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",

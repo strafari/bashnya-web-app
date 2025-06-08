@@ -5,7 +5,7 @@ import useStore, { News } from "../../../store/useStore";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import DOMPurify from "dompurify";
 import { motion } from "motion/react";
-
+const API = process.env.NEXT_PUBLIC_API_URL;
 export default function NewsDetailPage() {
   const { newsId } = useParams();
   const { news, setNews } = useStore();
@@ -37,7 +37,7 @@ export default function NewsDetailPage() {
     if (cached) {
       if (!cached.news_text || !cached.news_photo) {
         setIsLoading(true);
-        fetch(`https://bashnya-web-app-production.up.railway.app/news/${newsId}`)
+        fetch(`${API}/news/${newsId}`)
           .then((res) => {
             if (!res.ok) {
               if (res.status === 404) {
@@ -67,7 +67,7 @@ export default function NewsDetailPage() {
     }
 
     setIsLoading(true);
-    fetch(`https://bashnya-web-app-production.up.railway.app/news/${newsId}`)
+    fetch(`${API}/news/${newsId}`)
       .then((res) => {
         if (!res.ok) {
           if (res.status === 404) {

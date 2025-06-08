@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-
+const API = process.env.NEXT_PUBLIC_API_URL;
 export async function GET(request: NextRequest) {
   try {
     // Get the token from cookies
@@ -10,7 +10,7 @@ export async function GET(request: NextRequest) {
     }
 
     // Verify the token with your backend
-    const response = await fetch("https://bashnya-web-app-production.up.railway.app/htoya/", {
+    const response = await fetch("${API}/htoya/", {
       headers: {
         Cookie: `bonds=${token}`,
       },

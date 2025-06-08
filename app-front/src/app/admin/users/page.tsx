@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-
+const API = process.env.NEXT_PUBLIC_API_URL;
 type User = {
   id: number;
   user_name: string;
@@ -19,7 +19,7 @@ export default function UsersPage() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch("https://bashnya-web-app-production.up.railway.app/users/", {
+        const response = await fetch("${API}/users/", {
           credentials: "include",
         });
 
@@ -46,7 +46,7 @@ export default function UsersPage() {
 
     try {
       const response = await fetch(
-        `https://bashnya-web-app-production.up.railway.app/delete_user/${userId}`,
+        `${API}/delete_user/${userId}`,
         {
           method: "DELETE",
           credentials: "include",

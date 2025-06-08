@@ -6,7 +6,7 @@ import Link from "next/link";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
-
+const API = process.env.NEXT_PUBLIC_API_URL;
 export default function CreateEvent() {
   const router = useRouter();
   const [formData, setFormData] = useState({
@@ -48,7 +48,7 @@ export default function CreateEvent() {
     setError(null);
 
     try {
-      const response = await fetch("https://bashnya-web-app-production.up.railway.app/events/", {
+      const response = await fetch("${API}/events/", {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },

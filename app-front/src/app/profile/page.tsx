@@ -5,7 +5,7 @@ import useStore from "../../store/useStore"; // Adjust the import path as needed
 import EventsCard from "@/components/EventsCard";
 import EventModal from "@/components/EventModal";
 import PastEventsModal from "@/components/PastEventsModal";
-
+const API = process.env.NEXT_PUBLIC_API_URL;
 interface NewsItem {
   news_id: number;
   news_title: string;
@@ -155,7 +155,7 @@ const ProfilePage: React.FC = () => {
         try {
           // Fetch user info to check superuser status
           const userInfoResponse = await fetch(
-            "https://bashnya-web-app-production.up.railway.app/htoya/",
+            "${API}/htoya/",
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -171,7 +171,7 @@ const ProfilePage: React.FC = () => {
 
           // Fetch registered events for the user
           const userEventsResponse = await fetch(
-            "https://bashnya-web-app-production.up.railway.app/event_registrations/",
+            "${API}/event_registrations/",
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -184,7 +184,7 @@ const ProfilePage: React.FC = () => {
             const userEventsData = await userEventsResponse.json();
 
             // Fetch additional event details
-            const eventsResponse = await fetch("https://bashnya-web-app-production.up.railway.app/events");
+            const eventsResponse = await fetch("${API}/events");
             if (eventsResponse.ok) {
               const eventsData = await eventsResponse.json();
 

@@ -10,7 +10,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { registerLocale } from "react-datepicker";
 import { ru } from "date-fns/locale/ru";
-
+const API = process.env.NEXT_PUBLIC_API_URL;
 registerLocale("ru", ru);
 
 interface EventItem {
@@ -40,7 +40,7 @@ export default function EventsPage() {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await fetch("https://bashnya-web-app-production.up.railway.app/events/");
+        const response = await fetch("${API}/events/");
         if (!response.ok) {
           throw new Error("Failed to fetch events");
         }

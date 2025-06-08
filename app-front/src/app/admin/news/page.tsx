@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Modal from "@/components/EditModal"; // Ensure you have this Modal component
-
+const API = process.env.NEXT_PUBLIC_API_URL;
 type NewsItem = {
   news_id: number;
   news_photo: string;
@@ -22,7 +22,7 @@ export default function NewsList() {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await fetch("https://bashnya-web-app-production.up.railway.app/news/", {
+        const response = await fetch("${API}/news/", {
           credentials: "include",
         });
         if (!response.ok) {
@@ -47,7 +47,7 @@ export default function NewsList() {
   const handleDelete = async (id: number) => {
     if (!confirm("Вы уверены, что хотите удалить эту новость?")) return;
     try {
-      const res = await fetch(`https://bashnya-web-app-production.up.railway.app/news/${id}`, {
+      const res = await fetch(`${API}/news/${id}`, {
         method: "DELETE",
         credentials: "include",
       });
@@ -73,7 +73,7 @@ export default function NewsList() {
 
     try {
       const response = await fetch(
-        `https://bashnya-web-app-production.up.railway.app/news/${currentNews.news_id}`,
+        `${API}/news/${currentNews.news_id}`,
         {
           method: "PUT",
           credentials: "include",

@@ -2,6 +2,7 @@ import React, { useState, ChangeEvent } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import useStore from "@/store/useStore";
+const API = process.env.NEXT_PUBLIC_API_URL;
 
 interface EventItem {
   event_id: number;
@@ -67,7 +68,7 @@ const TicketModal: React.FC<TicketModalProps> = ({
 
     try {
       const response = await fetch(
-        "https://bashnya-web-app-production.up.railway.app/event_registrations/",
+        "${API}/event_registrations/",
         {
           method: "POST",
           headers: {

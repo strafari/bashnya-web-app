@@ -2,7 +2,7 @@ import React, { useState, ChangeEvent, FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import useStore from "@/store/useStore";
-
+const API = process.env.NEXT_PUBLIC_API_URL;
 interface AuthModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -68,7 +68,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
         }
       } else {
         // Registration logic remains the same
-        const response = await fetch("https://bashnya-web-app-production.up.railway.app/auth/register", {
+        const response = await fetch("${API}/auth/register", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

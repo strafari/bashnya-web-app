@@ -6,6 +6,7 @@ import Image from "next/image";
 import { PiOfficeChair } from "react-icons/pi";
 import useStore from "../store/useStore";
 import AuthModal from "./AuthModal";
+const API = process.env.NEXT_PUBLIC_API_URL;
 
 interface CoworkingSpace {
   coworking_id: number;
@@ -87,7 +88,7 @@ export default function ServiceItem({
   useEffect(() => {
     const fetchCoworkingSpaces = async () => {
       try {
-        const response = await fetch("https://bashnya-web-app-production.up.railway.app/coworking/");
+        const response = await fetch("${API}/coworking/");
         const data = await response.json();
         setCoworkingSpaces(data);
         const initialExpandedState = data.reduce(
@@ -105,7 +106,7 @@ export default function ServiceItem({
 
     const fetchSeats = async () => {
       try {
-        const response = await fetch("https://bashnya-web-app-production.up.railway.app/seats/");
+        const response = await fetch("${API}/seats/");
         const data = await response.json();
         setSeats(data);
       } catch (error) {
@@ -116,7 +117,7 @@ export default function ServiceItem({
     const fetchBookings = async () => {
       try {
         const token = useStore.getState().token;
-        const response = await fetch("https://bashnya-web-app-production.up.railway.app/bookings/", {
+        const response = await fetch("${API}/bookings/", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -197,7 +198,7 @@ export default function ServiceItem({
       }
 
       const token = useStore.getState().token;
-      const response = await fetch("https://bashnya-web-app-production.up.railway.app/bookings/", {
+      const response = await fetch("${API}/bookings/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -212,10 +213,10 @@ export default function ServiceItem({
       if (response.ok) {
         alert("Место успешно забронировано!");
         closeModal();
-        const seatsResponse = await fetch("https://bashnya-web-app-production.up.railway.app/seats/");
+        const seatsResponse = await fetch("${API}/seats/");
         const seatsData = await seatsResponse.json();
         setSeats(seatsData);
-        const bookingsResponse = await fetch("https://bashnya-web-app-production.up.railway.app/bookings/", {
+        const bookingsResponse = await fetch("${API}/bookings/", {
           headers: {
             Authorization: `Bearer ${token}`,
           },

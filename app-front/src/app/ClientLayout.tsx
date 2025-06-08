@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import useStore from "../store/useStore";
-
+const API = process.env.NEXT_PUBLIC_API_URL;
 export default function ClientLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const isAdminPage = pathname?.startsWith("/admin");
@@ -30,9 +30,9 @@ export default function ClientLayout({ children }: { children: ReactNode }) {
     const fetchInitialData = async () => {
       try {
         const [newsRes, departmentsRes, servicesRes] = await Promise.all([
-          fetch("https://bashnya-web-app-production.up.railway.app/news"),
-          fetch("https://bashnya-web-app-production.up.railway.app/departments"),
-          fetch("https://bashnya-web-app-production.up.railway.app/services"),
+          fetch("${API}/news"),
+          fetch("${API}/departments"),
+          fetch("${API}/services"),
         ]);
 
         if (newsRes.ok) setNews(await newsRes.json());
