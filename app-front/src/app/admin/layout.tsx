@@ -16,7 +16,7 @@ export default function AdminLayout({
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const res = await fetch("${API}/htoya/", {
+        const res = await fetch(`${API}/htoya/`, {
           credentials: "include",
         });
         if (res.ok) {
@@ -42,7 +42,7 @@ export default function AdminLayout({
 
   const handleLogout = async () => {
     try {
-      const res = await fetch("${API}/auth/jwt/logout", {
+      const res = await fetch(`${API}/auth/jwt/logout`, {
         method: "POST",
         credentials: "include",
       });

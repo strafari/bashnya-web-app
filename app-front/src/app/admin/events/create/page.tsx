@@ -48,7 +48,7 @@ export default function CreateEvent() {
     setError(null);
 
     try {
-      const response = await fetch("${API}/events/", {
+      const response = await fetch(`${API}/events/`, {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },

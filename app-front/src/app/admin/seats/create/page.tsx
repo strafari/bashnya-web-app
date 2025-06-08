@@ -26,7 +26,7 @@ export default function CreateSeat() {
     setError(null);
 
     try {
-      const response = await fetch("${API}/seats/", {
+      const response = await fetch(`${API}/seats/`, {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },

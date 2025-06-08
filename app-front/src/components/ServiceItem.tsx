@@ -88,7 +88,7 @@ export default function ServiceItem({
   useEffect(() => {
     const fetchCoworkingSpaces = async () => {
       try {
-        const response = await fetch("${API}/coworking/");
+        const response = await fetch(`${API}/coworking/`);
         const data = await response.json();
         setCoworkingSpaces(data);
         const initialExpandedState = data.reduce(
@@ -106,7 +106,7 @@ export default function ServiceItem({
 
     const fetchSeats = async () => {
       try {
-        const response = await fetch("${API}/seats/");
+        const response = await fetch(`${API}/seats/`);
         const data = await response.json();
         setSeats(data);
       } catch (error) {
@@ -117,7 +117,7 @@ export default function ServiceItem({
     const fetchBookings = async () => {
       try {
         const token = useStore.getState().token;
-        const response = await fetch("${API}/bookings/", {
+        const response = await fetch(`${API}/bookings/`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -198,7 +198,7 @@ export default function ServiceItem({
       }
 
       const token = useStore.getState().token;
-      const response = await fetch("${API}/bookings/", {
+      const response = await fetch(`${API}/bookings/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -213,10 +213,10 @@ export default function ServiceItem({
       if (response.ok) {
         alert("Место успешно забронировано!");
         closeModal();
-        const seatsResponse = await fetch("${API}/seats/");
+        const seatsResponse = await fetch(`${API}/seats/`);
         const seatsData = await seatsResponse.json();
         setSeats(seatsData);
-        const bookingsResponse = await fetch("${API}/bookings/", {
+        const bookingsResponse = await fetch(`${API}/bookings/`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

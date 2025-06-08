@@ -155,7 +155,7 @@ const ProfilePage: React.FC = () => {
         try {
           // Fetch user info to check superuser status
           const userInfoResponse = await fetch(
-            "${API}/htoya/",
+            `${API}/htoya/`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -171,7 +171,7 @@ const ProfilePage: React.FC = () => {
 
           // Fetch registered events for the user
           const userEventsResponse = await fetch(
-            "${API}/event_registrations/",
+            `${API}/event_registrations/`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -184,7 +184,7 @@ const ProfilePage: React.FC = () => {
             const userEventsData = await userEventsResponse.json();
 
             // Fetch additional event details
-            const eventsResponse = await fetch("${API}/events");
+            const eventsResponse = await fetch(`${API}/events`);
             if (eventsResponse.ok) {
               const eventsData = await eventsResponse.json();
 

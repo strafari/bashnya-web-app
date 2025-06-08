@@ -10,7 +10,7 @@ export async function GET(request: NextRequest) {
     }
 
     // Verify the token with your backend
-    const response = await fetch("${API}/htoya/", {
+    const response = await fetch(`${API}/htoya/`, {
       headers: {
         Cookie: `bonds=${token}`,
       },

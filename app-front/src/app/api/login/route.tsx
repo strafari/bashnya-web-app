@@ -7,7 +7,7 @@ export async function POST(req: NextRequest) {
   formData.append("username", email);
   formData.append("password", password);
 
-  const response = await fetch("${API}/auth/jwt/login", {
+  const response = await fetch(`${API}/auth/jwt/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",

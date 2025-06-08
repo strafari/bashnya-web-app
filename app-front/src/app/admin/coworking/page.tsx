@@ -22,7 +22,7 @@ export default function CoworkingList() {
   useEffect(() => {
     const fetchCoworkings = async () => {
       try {
-        const response = await fetch("${API}/coworking/", {
+        const response = await fetch(`${API}/coworking/`, {
           credentials: "include",
         });
         if (!response.ok) {

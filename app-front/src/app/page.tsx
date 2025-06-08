@@ -77,7 +77,7 @@ export default function Home() {
     const fetchLatestNews = async () => {
       try {
         const response = await fetch(
-          "${API}/news?limit=3&sort=latest"
+          `${API}/news?limit=3&sort=latest`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch news");
@@ -98,7 +98,7 @@ export default function Home() {
     // Fetch the latest events data
     const fetchLatestEvents = async () => {
       try {
-        const response = await fetch("${API}/events");
+        const response = await fetch(`${API}/events`);
         if (!response.ok) {
           throw new Error("Failed to fetch events");
         }

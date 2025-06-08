@@ -19,7 +19,7 @@ export default function UsersPage() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch("${API}/users/", {
+        const response = await fetch(`${API}/users/`, {
           credentials: "include",
         });
 

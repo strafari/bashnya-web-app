@@ -27,7 +27,7 @@ export default function CreateCoworking() {
     setError(null);
 
     try {
-      const response = await fetch("${API}/coworking/", {
+      const response = await fetch(`${API}/coworking/`, {
         method: "POST",
         credentials: "include",
         headers: {

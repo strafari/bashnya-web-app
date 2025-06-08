@@ -19,7 +19,7 @@ export default function SeatList() {
   useEffect(() => {
     const fetchSeats = async () => {
       try {
-        const response = await fetch("${API}/seats/", {
+        const response = await fetch(`${API}/seats/`, {
           credentials: "include",
         });
         if (!response.ok) {

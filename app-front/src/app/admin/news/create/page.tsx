@@ -31,7 +31,7 @@ export default function CreateNews() {
     imageData.append("file", file);
 
     try {
-      const response = await fetch("${API}/upload/", {
+      const response = await fetch(`${API}/upload/`, {
         method: "POST",
         body: imageData,
       });
@@ -53,7 +53,7 @@ export default function CreateNews() {
     setError(null);
 
     try {
-      const response = await fetch("${API}/news/", {
+      const response = await fetch(`${API}/news/`, {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },

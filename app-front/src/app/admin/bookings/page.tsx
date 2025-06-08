@@ -24,7 +24,7 @@ export default function BookingList() {
     const fetchBookings = async () => {
       try {
         const token = useStore.getState().token;
-        const response = await fetch('${API}/bookings/', {
+        const response = await fetch(`${API}/bookings/`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

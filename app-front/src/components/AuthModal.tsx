@@ -68,7 +68,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
         }
       } else {
         // Registration logic remains the same
-        const response = await fetch("${API}/auth/register", {
+        const response = await fetch(`${API}/auth/register`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

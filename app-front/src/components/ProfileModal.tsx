@@ -16,7 +16,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
 
   const handleLogout = async () => {
     try {
-      const response = await fetch("${API}/auth/jwt/logout", {
+      const response = await fetch(`${API}/auth/jwt/logout`, {
         method: "POST",
         credentials: "include",
         headers: {
@@ -36,7 +36,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch("${API}/htoya/", {
+        const response = await fetch(`${API}/htoya/`, {
           credentials: "include",
         });
         if (response.ok) {

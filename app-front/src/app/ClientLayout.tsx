@@ -30,9 +30,9 @@ export default function ClientLayout({ children }: { children: ReactNode }) {
     const fetchInitialData = async () => {
       try {
         const [newsRes, departmentsRes, servicesRes] = await Promise.all([
-          fetch("${API}/news"),
-          fetch("${API}/departments"),
-          fetch("${API}/services"),
+          fetch(`${API}/news`),
+          fetch(`${API}/departments`),
+          fetch(`${API}/services`),
         ]);
 
         if (newsRes.ok) setNews(await newsRes.json());

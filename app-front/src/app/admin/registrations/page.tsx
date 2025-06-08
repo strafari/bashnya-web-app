@@ -19,7 +19,7 @@ export default function EventRegistrationList() {
     const fetchRegistrations = async () => {
       try {
         const response = await fetch(
-          "${API}/event_registrations/",
+          `${API}/event_registrations/`,
           {
             credentials: "include",
           }

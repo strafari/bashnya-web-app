@@ -22,7 +22,7 @@ export default function NewsList() {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await fetch("${API}/news/", {
+        const response = await fetch(`${API}/news/`, {
           credentials: "include",
         });
         if (!response.ok) {

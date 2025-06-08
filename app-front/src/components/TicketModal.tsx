@@ -68,7 +68,7 @@ const TicketModal: React.FC<TicketModalProps> = ({
 
     try {
       const response = await fetch(
-        "${API}/event_registrations/",
+        `${API}/event_registrations/`,
         {
           method: "POST",
           headers: {

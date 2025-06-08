@@ -19,7 +19,7 @@ export default function NewsPage() {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch("${API}/news/")
+    fetch(`${API}/news/`)
       .then((res) => {
         if (!res.ok) {
           throw new Error(`Error: ${res.statusText}`);
