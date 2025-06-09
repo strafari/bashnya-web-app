@@ -47,7 +47,7 @@ app = FastAPI(title="Bashnya_mob")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=os.environ.get("FRONTEND_URL"),  # ваш фронтенд
+    allow_origins=[ os.getenv("FRONTEND_URL") ],  # ваш фронтенд
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
