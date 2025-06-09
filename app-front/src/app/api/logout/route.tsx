@@ -1,8 +1,8 @@
 // /app/api/logout/route.ts
 import { NextRequest, NextResponse } from "next/server";
-
+const API = process.env.NEXT_PUBLIC_API_URL;
 export async function POST(req: NextRequest) {
-  const response = await fetch("/api/logout", {
+  const response = await fetch(`${API}/auth/jwt/logout`, {
     method: "POST",
     credentials: "include",
   });

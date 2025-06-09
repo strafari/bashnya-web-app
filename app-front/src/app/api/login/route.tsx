@@ -1,3 +1,4 @@
+import router from "next/router";
 import { NextRequest, NextResponse } from "next/server";
 const API = process.env.NEXT_PUBLIC_API_URL;
 export async function POST(req: NextRequest) {
@@ -8,13 +9,15 @@ export async function POST(req: NextRequest) {
   formData.append("password", password);
 
   const response = await fetch(`${API}/auth/jwt/login`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-    credentials: "include",
-    body: formData.toString(),
+  method: "POST",
+  headers: { "Content-Type": "application/x-www-form-urlencoded" },
+  credentials: "include",
+  body: new URLSearchParams({ username: email, password }).toString(),
   });
+// если 204 — считаем успехом и редиректим
+    if (response.status === 204) router.push("/admin");
+    else {"login error"}
+
 
   let data: any = {};
 
