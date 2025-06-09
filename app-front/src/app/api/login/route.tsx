@@ -10,6 +10,7 @@ export async function POST(req: NextRequest) {
 
   const response = await fetch(`${API}/auth/jwt/login`, {
     method: "POST",
+    mode: "cors", 
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
     },

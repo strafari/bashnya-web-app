@@ -19,6 +19,7 @@ export default function AdminLayout({
       try {
         const res = await fetch(`${API}/htoya/`, {
           credentials: "include",
+          mode: "cors", 
         });
         if (res.ok) {
           const data = await res.json();
