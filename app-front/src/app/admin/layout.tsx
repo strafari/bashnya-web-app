@@ -3,6 +3,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 const API = process.env.NEXT_PUBLIC_API_URL;
+
 export default function AdminLayout({
   children,
 }: {
@@ -16,8 +17,7 @@ export default function AdminLayout({
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const res = await fetch("/api/check-auth", {
-          method: "GET",
+        const res = await fetch(`${API}/htoya/`, {
           credentials: "include",
         });
         if (res.ok) {

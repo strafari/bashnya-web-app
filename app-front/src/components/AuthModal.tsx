@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import useStore from "@/store/useStore";
 const API = process.env.NEXT_PUBLIC_API_URL;
+
 interface AuthModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -43,10 +44,14 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
       if (isLogin) {
         // Use the updated API
         const response = await fetch("/api/login", {
-        method: "POST",
-        credentials: "include",      // ← ОБЯЗАТЕЛЬНО
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: formData.email, password: formData.password }),
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: formData.email,
+            password: formData.password,
+          }),
         });
 
         if (response.ok) {

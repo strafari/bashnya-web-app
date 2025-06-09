@@ -1,13 +1,13 @@
 "use client";
-
+const API = process.env.NEXT_PUBLIC_API_URL;
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-const API = process.env.NEXT_PUBLIC_API_URL;
+
 export default function CreateNews() {
   const router = useRouter();
   const [formData, setFormData] = useState({
-    news_photo: null as File | null,
+    news_photo: "",
     news_title: "",
     news_text: "",
     news_date: new Date().toISOString().split("T")[0],
@@ -53,18 +53,11 @@ export default function CreateNews() {
     setError(null);
 
     try {
-      const payload = new FormData();
-    payload.append("news_title", formData.news_title);
-    payload.append("news_text", formData.news_text);
-    payload.append("news_date", formData.news_date);
-    if (formData.news_photo instanceof File) {
-    payload.append("photo", formData.news_photo);
-    }
-
-    const response = await fetch(`${API}/news/`, {
-      method: "POST",
-      credentials: "include",
-      body: payload,
+      const response = await fetch(`${API}/news/`, {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
       });
 
       if (!response.ok) {
@@ -103,15 +96,12 @@ export default function CreateNews() {
             Изображение
           </label>
           <input
-             type="file"
-   name="photo"
-   onChange={e =>
-     setFormData(prev => ({
-       ...prev,
-       news_photo: e.target.files ? e.target.files[0] : null
-     }))
-   }
-   required
+            type="text"
+            name="news_photo"
+            value={formData.news_photo}
+            onChange={handleChange}
+            placeholder="Вставьте URL изображения"
+            className="mt-2 shadow appearance-none border rounded w-full py-2 px-3"
           />
         </div>
         <div className="mb-4">

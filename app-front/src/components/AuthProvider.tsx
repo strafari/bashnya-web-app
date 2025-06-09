@@ -1,4 +1,5 @@
 "use client";
+const API = process.env.NEXT_PUBLIC_API_URL;
 
 import { useEffect } from "react";
 import useStore from "../store/useStore";
@@ -18,10 +19,7 @@ export default function AuthProvider({
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const response = await fetch("/api/check-auth", {
-          method: "GET",
-          credentials: "include",
-          });
+        const response = await fetch("/api/check-auth");
         if (response.ok) {
           const data = await response.json();
           if (data.authenticated && data.token) {

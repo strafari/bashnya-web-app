@@ -1,4 +1,5 @@
 "use client";
+const API = process.env.NEXT_PUBLIC_API_URL;
 
 import { useEffect, useState, useMemo } from "react";
 import Link from "next/link";
@@ -8,7 +9,7 @@ import { motion } from "motion/react";
 import Image from "next/image";
 import { useInView } from "react-intersection-observer";
 import NewsCard from "@/components/NewsCard"; // Update the path
-const API = process.env.NEXT_PUBLIC_API_URL;
+
 export default function NewsPage() {
   const { news, setNews } = useStore();
   const [searchQuery, setSearchQuery] = useState("");

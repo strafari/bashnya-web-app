@@ -1,11 +1,13 @@
 "use client";
+const API = process.env.NEXT_PUBLIC_API_URL;
+
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import useStore from "../../store/useStore"; // Adjust the import path as needed
 import EventsCard from "@/components/EventsCard";
 import EventModal from "@/components/EventModal";
 import PastEventsModal from "@/components/PastEventsModal";
-const API = process.env.NEXT_PUBLIC_API_URL;
+
 interface NewsItem {
   news_id: number;
   news_title: string;

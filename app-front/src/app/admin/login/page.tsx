@@ -1,6 +1,6 @@
 // pages/admin/login.tsx
 "use client";
-
+const API = process.env.NEXT_PUBLIC_API_URL;
 import React, { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 

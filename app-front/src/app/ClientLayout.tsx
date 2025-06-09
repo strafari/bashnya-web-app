@@ -1,11 +1,12 @@
 "use client";
+const API = process.env.NEXT_PUBLIC_API_URL;
 
 import { ReactNode, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import useStore from "../store/useStore";
-const API = process.env.NEXT_PUBLIC_API_URL;
+
 export default function ClientLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const isAdminPage = pathname?.startsWith("/admin");
