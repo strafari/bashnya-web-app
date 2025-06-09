@@ -1,20 +1,17 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from "next/server";
 
-export const dynamic = 'force-dynamic';  // чтобы за каждый запрос бралось свежее request.headers
+export const dynamic = "force-dynamic";
 
 export async function GET(request: NextRequest) {
-  // 1) читаем переменную и чистим хвостовой /
-  const raw = process.env.NEXT_PUBLIC_API_URL || '';
-  const API = raw.replace(/\/$/, '');
-  
-  // 2) храним куки из запроса браузера
-  const cookie = request.headers.get('cookie') || '';
+  const apiRoot = (process.env.NEXT_PUBLIC_API_URL || "").replace(/\/$/, "");
+  // Берём куки из пришедшего запроса
+  const cookie = request.headers.get("cookie") || "";
 
-  // 3) проксируем запрос на реальный бэк-энд
-  const res = await fetch(`${API}/htoya/`, {
-    method: 'GET',
+  // Проксируем на свой бэкенд-эндоинт, где вы возвращаете current_user
+  const res = await fetch(`${apiRoot}/htoya/`, {
+    method: "GET",
     headers: { cookie },
-    credentials: 'include',  // не помешает, хотя для серверных fetch это не так важно
+    credentials: "include",
   });
 
   if (res.ok) {
