@@ -18,7 +18,10 @@ export default function AuthProvider({
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const response = await fetch("/api/check-auth");
+        const response = await fetch("/api/check-auth", {
+          method: "GET",
+          credentials: "include",
+          });
         if (response.ok) {
           const data = await response.json();
           if (data.authenticated && data.token) {

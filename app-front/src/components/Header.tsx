@@ -127,7 +127,10 @@ export default function Header() {
   const handleProfileNavigation = async () => {
     try {
       // Use the consistent API
-      const response = await fetch("/api/check-auth");
+      const response = await fetch("/api/check-auth", {
+        method: "GET",
+        credentials: "include",
+        });
       const data = await response.json();
 
       if (data.authenticated) {
