@@ -47,10 +47,10 @@ app = FastAPI(title="Bashnya_mob")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=os.getenv("FRONTEND_URL"),  # Allow all domains
+    allow_origins=["https://ingenious-gratitude-production.up.railway.app"],  # ваш фронтенд
     allow_credentials=True,
-    allow_methods=["*"],  # Allow all HTTP methods
-    allow_headers=["*"],  # Allow all headers
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 
