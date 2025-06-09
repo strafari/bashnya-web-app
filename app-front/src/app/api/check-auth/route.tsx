@@ -1,45 +1,30 @@
+// путь: app-front/src/app/api/check-auth/route.tsx
+
 import { NextRequest, NextResponse } from "next/server";
-const API = process.env.NEXT_PUBLIC_API_URL;
+
+const API = process.env.NEXT_PUBLIC_API_URL!;
+
 export async function GET(request: NextRequest) {
   try {
-    // Get the token from cookies
-    const token = request.cookies.get("bonds")?.value;
+    // забираем заголовок с куками из входящего запроса
+    const cookieHeader = request.headers.get("cookie") || "";
 
-    if (!token) {
-      return NextResponse.json({ authenticated: false }, { status: 401 });
-    }
-
-    // Verify the token with your backend
-    const response = await fetch(`${API}/htoya/`, {
+    // проксируем GET /htoya/
+    const apiRes = await fetch(`${API}/htoya/`, {
+      method: "GET",
       headers: {
-        Cookie: `bonds=${token}`,
+        cookie: cookieHeader,
       },
-      credentials: "include",
     });
 
-    if (!response.ok) {
-      // Token is invalid
-      return NextResponse.json({ authenticated: false }, { status: 401 });
+    if (apiRes.ok) {
+      const user = await apiRes.json();
+      return NextResponse.json({ authenticated: true, user });
+    } else {
+      return NextResponse.json({ authenticated: false }, { status: apiRes.status });
     }
-
-    // Token is valid
-    const userData = await response.json();
-    return NextResponse.json(
-      {
-        authenticated: true,
-        user: userData,
-        token: token, // Return the token so client can update state
-      },
-      { status: 200 }
-    );
-  } catch (error) {
-    console.error("Authentication check failed:", error);
-    return NextResponse.json(
-      {
-        authenticated: false,
-        error: "Authentication check failed",
-      },
-      { status: 500 }
-    );
+  } catch (e) {
+    console.error("[/api/check-auth] proxy error:", e);
+    return NextResponse.json({ authenticated: false, error: "proxy error" }, { status: 500 });
   }
 }
