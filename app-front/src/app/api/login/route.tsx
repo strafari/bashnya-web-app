@@ -21,17 +21,20 @@ export async function POST(request: NextRequest) {
     });
 
     // вытаскиваем из Set-Cookie только пару name=value
-    const setCookie = apiRes.headers.get("set-cookie") || "";
-    const [pair] = setCookie.split(";");
-    const [name, value] = pair.split("=");
+      const raw = apiRes.headers.get("set-cookie") || "";
+      const [pair] = raw.split(";");
+      let [name, value] = pair.split("=");
+    // если значение в кавычках — убираем их
+      if (value.startsWith('"') && value.endsWith('"')) {
+       value = value.slice(1, -1);
+      }
 
     // собираем ответ Next.js
     let res: NextResponse;
     if (apiRes.status === 204) {
-      // 204 без тела и без Content-Type
+      // успешный логин — просто 204
       res = new NextResponse(null, { status: 204 });
     } else {
-      // если FastAPI вернул ошибку (400/401/422) — прокидываем её JSON
       const err = await apiRes.json();
       res = NextResponse.json(err, { status: apiRes.status });
     }
