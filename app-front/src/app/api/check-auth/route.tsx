@@ -1,34 +1,38 @@
-// путь: app-front/src/app/api/check-auth/route.tsx
-
 import { NextRequest, NextResponse } from "next/server";
 
-const API = process.env.NEXT_PUBLIC_API_URL!;
+const RAW = process.env.NEXT_PUBLIC_API_URL || "";
+const API = RAW.endsWith("/") ? RAW.slice(0, -1) : RAW;
+
+// Если ваш бэкенд-чек лежит именно на /htoya/, забиваем этот путь
+const BACKEND_CHECK_PATH = "/htoya/";
 
 export async function GET(request: NextRequest) {
   try {
-    // забираем заголовок с куками из входящего запроса
-    // const cookieHeader = request.headers.get("cookie") || "";
+    // Берём куки, которые пришли из браузера на фронт-домен
+    const cookie = request.headers.get("cookie") || "";
 
-    const cookie = request.headers.get("cookie");
+    // Собираем точный URL, без двойных слэшей
+    const url = API + BACKEND_CHECK_PATH;
 
-    const apiRes = await fetch(`${API}/htoya/`, {
-    headers: { cookie: cookie || "" },
-    // проксируем GET /htoya/
-    // const apiRes = await fetch(`${API}/htoya/`, {
-    //   method: "GET",
-    //   headers: {
-    //     cookie: cookieHeader,
-      
+    const res = await fetch(url, {
+      method: "GET",
+      headers: {
+        // прокидываем тот же cookie-заголовок
+        cookie,
+      },
     });
-  
-    if (apiRes.ok) {
-      const user = await apiRes.json();
+
+    if (res.ok) {
+      const user = await res.json();
       return NextResponse.json({ authenticated: true, user });
     } else {
-      return NextResponse.json({ authenticated: false }, { status: apiRes.status });
+      return NextResponse.json({ authenticated: false }, { status: res.status });
     }
-  } catch (e) {
-    console.error("[/api/check-auth] proxy error:", e);
-    return NextResponse.json({ authenticated: false, error: "proxy error" }, { status: 500 });
+  } catch (err) {
+    console.error("check-auth proxy error:", err);
+    return NextResponse.json(
+      { authenticated: false, error: "proxy failure" },
+      { status: 500 }
+    );
   }
 }
