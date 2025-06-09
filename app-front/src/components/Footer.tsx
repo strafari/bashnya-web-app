@@ -12,7 +12,7 @@ export default function Footer() {
             Контакты
           </h1>
           <Link
-            href="https://2gis.ru/norilsk/firm/70000001039885618?m=88.166471%2C69.353526%2F16.29%2Fp%2F45%2Fr%2F117.83"
+            href="https://2gis.ru/norilsk/firm/70000001081261890?m=88.208478%2C69.341348%2F17%2Fp%2F49.6%2Fr%2F4.89"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block transition-all duration-500 hover:scale-[1.02]"
@@ -66,7 +66,7 @@ export default function Footer() {
             <div className="flex gap-3">
               <div className="transition-all duration-500 hover:scale-[1.05]">
                 <Link
-                  href="https://2gis.ru/norilsk/firm/70000001039885618"
+                  href="https://2gis.ru/norilsk/firm/70000001081261890?m=88.208478%2C69.341348%2F17%2Fp%2F49.6%2Fr%2F4.89"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block transition-all duration-500 hover:scale-[1.05]"
@@ -82,7 +82,7 @@ export default function Footer() {
               </div>
               <div className="transition-all duration-500 hover:scale-[1.05]">
                 <Link
-                  href="https://2gis.ru/norilsk/firm/70000001039885618"
+                  href="https://t.me/Bashnya_Backstage"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block transition-all duration-500 hover:scale-[1.05]"
@@ -98,7 +98,7 @@ export default function Footer() {
               </div>
               <div className="transition-all duration-500 hover:scale-[1.05]">
                 <Link
-                  href=""
+                  href="https://vk.com/arctictower"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block transition-all duration-500 hover:scale-[1.05]"
