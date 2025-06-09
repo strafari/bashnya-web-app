@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-
+export const dynamic = 'force-dynamic';
 const RAW = process.env.NEXT_PUBLIC_API_URL || "";
 const API = RAW.endsWith("/") ? RAW.slice(0, -1) : RAW;
 
