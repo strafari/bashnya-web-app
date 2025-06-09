@@ -16,7 +16,8 @@ export default function AdminLayout({
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const res = await fetch(`${API}/htoya/`, {
+        const res = await fetch("/api/check-auth", {
+          method: "GET",
           credentials: "include",
         });
         if (res.ok) {
