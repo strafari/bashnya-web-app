@@ -1,14 +1,22 @@
-module.exports = {
-  async rewrites() {
-    return [
+ /** @type {import('next').NextConfig} */
+const nextConfig = {
+  images: {
+    unoptimized: true,
+    remotePatterns: [
       {
-        source: '/api/login',
-        destination: `${process.env.NEXT_PUBLIC_API_URL}/auth/jwt/login`,
+        protocol: "https",
+        hostname: "img.icons8.com",
       },
       {
-        source: '/api/:path*',
-        destination: `${process.env.NEXT_PUBLIC_API_URL}/:path*`,
+        protocol: "https",
+        hostname: "static.tildacdn.com",
       },
-    ];
+      {
+        protocol: "https",
+        hostname: "i.pinimg.com",
+      },
+    ],
   },
 };
+
+module.exports = nextConfig;
