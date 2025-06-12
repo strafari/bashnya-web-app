@@ -25,10 +25,12 @@ class UserCreate(schemas.BaseUserCreate):
 class CoworkingRead(BaseModel):
     coworking_id: int
     coworking_location: int
+    is_conference: bool
 
 class CoworkingCreate(BaseModel):
     coworking_location: int
-
+    is_conference: bool
+    
 class BookingRead(BaseModel):
     booking_id: int
     booking_user_id: int

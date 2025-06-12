@@ -22,6 +22,7 @@ coworking = Table(
     metadata,
     Column("coworking_id", Integer, primary_key=True),
     Column("coworking_location", Integer, nullable=False),
+    Column("is_conference", Boolean, nullable=False),
 )
 
 booking = Table(

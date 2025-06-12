@@ -32,6 +32,7 @@ class Coworking(Base):
 
     coworking_id = Column(Integer, primary_key=True)
     coworking_location = Column(Integer, nullable=False)
+    is_conference = Column(Boolean, nullable= False)
     seat = relationship("Seat", back_populates="coworking")
 
 
